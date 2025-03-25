@@ -5,12 +5,12 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86_64.exe",
+            "url": "https://github.com/llanc/hidell/releases/download/v1.4/HIDELL_x86_64.exe",
             "bin": "HIDELL_x86_64.exe",
             "hash": "skip"
         },
         "32bit": {
-            "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86.exe",
+            "url": "https://github.com/llanc/hidell/releases/download/v1.4/HIDELL_x86.exe",
             "bin": "HIDELL_x86.exe",
             "hash": "skip"
         }
