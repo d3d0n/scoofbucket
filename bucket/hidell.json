@@ -1,0 +1,32 @@
+{
+    "version": "1.4",
+    "description": "Hidell - Lightweight process hider",
+    "homepage": "https://github.com/llanc/hidell",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86_64.exe",
+            "bin": "HIDELL_x86_64.exe",
+            "hash": "skip"
+        },
+        "32bit": {
+            "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86.exe",
+            "bin": "HIDELL_x86.exe",
+            "hash": "skip"
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/llanc/hidell",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86_64.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86.exe"
+            }
+        }
+    }
+}
