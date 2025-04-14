@@ -13,6 +13,10 @@
             "bin": "HIDELL_x86.exe"
         }
     },
+    "notes": [
+        "Run Hidell as administrator for full functionality.",
+        "See https://github.com/llanc/hidell for documentation."
+    ],
     "checkver": {
         "github": "https://github.com/llanc/hidell",
         "regex": "v([\\d.]+)"
@@ -21,10 +25,10 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86_64.exe"
+                }
             },
             "32bit": {
                 "url": "https://github.com/llanc/hidell/releases/download/v$version/HIDELL_x86.exe"
             }
         }
-    }
 }
