@@ -5,10 +5,7 @@
     "license": "Proprietary",
     "architecture": {
         "64bit": {
-            "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.46.0.exe#/dl.7z",
-            "bin": [
-                "Яндекс Музыка.exe"
-            ]
+            "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.46.0.exe#/dl.7z"
         }
     },
     "post_install": [
