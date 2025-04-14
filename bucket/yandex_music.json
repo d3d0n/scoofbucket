@@ -10,13 +10,31 @@
     },
     "installer": {
         "script": [
-            "Expand-7zipArchive \"$dir\\$PLUGINSDIR\\app-64.7z\" $dir | Out-Null",
-            "$s = Join-Path $env:APPDATA 'Microsoft\\Windows\\Start Menu\\Programs\\Яндекс Музыка.lnk'",
-            "$t = Join-Path $dir 'Яндекс Музыка.exe'",
-            "$ws = New-Object -ComObject WScript.Shell",
-            "$lnk = $ws.CreateShortcut($s)",
-            "$lnk.TargetPath = $t",
-            "$lnk.Save()"
+            "Write-Host \"Searching for app-64.7z...\"",
+            "Get-ChildItem \"$dir\" -Recurse | ForEach-Object { Write-Host $_.FullName }",
+            "if (Test-Path \"$dir\\$PLUGINSDIR\\app-64.7z\") {",
+            "    Write-Host \"Found at $dir\\$PLUGINSDIR\\app-64.7z\"",
+            "    Expand-7zipArchive \"$dir\\$PLUGINSDIR\\app-64.7z\" \"$dir\" | Out-Null",
+            "} elseif (Test-Path \"$dir\\PLUGINSDIR\\app-64.7z\") {",
+            "    Write-Host \"Found at $dir\\PLUGINSDIR\\app-64.7z\"",
+            "    Expand-7zipArchive \"$dir\\PLUGINSDIR\\app-64.7z\" \"$dir\" | Out-Null",
+            "} else {",
+            "    Write-Host \"Could not find app-64.7z!\"",
+            "    exit 1",
+            "}",
+            "",
+            "if (Test-Path \"$dir\\Яндекс Музыка.exe\") {",
+            "    Write-Host \"Found Яндекс Музыка.exe\"",
+            "    $s = Join-Path $env:APPDATA 'Microsoft\\Windows\\Start Menu\\Programs\\Яндекс Музыка.lnk'",
+            "    $t = Join-Path $dir 'Яндекс Музыка.exe'",
+            "    $ws = New-Object -ComObject WScript.Shell",
+            "    $lnk = $ws.CreateShortcut($s)",
+            "    $lnk.TargetPath = $t",
+            "    $lnk.Save()",
+            "} else {",
+            "    Write-Host \"Could not find Яндекс Музыка.exe!\"",
+            "    exit 1",
+            "}"
         ]
     },
     "checkver": {
