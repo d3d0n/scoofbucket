@@ -1,0 +1,29 @@
+{
+    "version": "5.46.0",
+    "description": "Yandex Music Desktop",
+    "homepage": "https://music.yandex.ru",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.46.0.exe#/dl.7z",
+            "bin": "app-64.7z/Яндекс Музыка.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://music-desktop-application.s3.yandex.net/stable/",
+        "regex": "Yandex_Music_x64_([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_$version.exe"
+            }
+        }
+    },
+    "shortcuts": [
+        [
+            "app-64.7z/Яндекс Музыка.exe",
+            "Яндекс Музыка"
+        ]
+    ]
+}
