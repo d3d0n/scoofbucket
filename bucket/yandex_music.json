@@ -11,6 +11,9 @@
             ]
         }
     },
+    "post_install": [
+        "Expand-7zipArchive \"$dir\\$PLUGINSDIR\\app-64.7z\" $dir | Out-Null"
+    ],
     "checkver": {
         "url": "https://music-desktop-application.s3.yandex.net/stable/",
         "regex": "Yandex_Music_x64_([\\d.]+)\\.exe"
