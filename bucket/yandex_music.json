@@ -8,9 +8,17 @@
             "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_5.46.0.exe#/dl.7z"
         }
     },
-    "post_install": [
-        "Expand-7zipArchive \"$dir\\$PLUGINSDIR\\app-64.7z\" $dir | Out-Null"
-    ],
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\$PLUGINSDIR\\app-64.7z\" $dir | Out-Null",
+            "$s = Join-Path $env:APPDATA 'Microsoft\\Windows\\Start Menu\\Programs\\Яндекс Музыка.lnk'",
+            "$t = Join-Path $dir 'Яндекс Музыка.exe'",
+            "$ws = New-Object -ComObject WScript.Shell",
+            "$lnk = $ws.CreateShortcut($s)",
+            "$lnk.TargetPath = $t",
+            "$lnk.Save()"
+        ]
+    },
     "checkver": {
         "url": "https://music-desktop-application.s3.yandex.net/stable/",
         "regex": "Yandex_Music_x64_([\\d.]+)\\.exe"
@@ -18,14 +26,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_$version.exe"
+                "url": "https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_x64_$version.exe#/dl.7z"
             }
         }
-    },
-    "shortcuts": [
-        [
-            "Яндекс Музыка.exe",
-            "Яндекс Музыка"
-        ]
-    ]
+    }
 }
